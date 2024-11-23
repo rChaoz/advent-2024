@@ -8,6 +8,6 @@ pub struct DayInfo {
     pub example2: &'static str,
 }
 
-pub const DAYS: [DayInfo; 0] = [/* day_1::INFO */];
+pub const DAYS: [DayInfo; 1] = [day_1::INFO];
 
-//mod day_1;
+mod day_1;
