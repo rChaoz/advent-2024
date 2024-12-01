@@ -1,5 +1,4 @@
 use super::DayInfo;
-use std::io::Write;
 
 pub const INFO: DayInfo = DayInfo {
     name: "Trebuchet?!",
@@ -13,6 +12,6 @@ pub const INFO: DayInfo = DayInfo {
 ...",
 };
 
-fn part1(input: &str, output: &mut dyn Write) {}
+fn part1(input: &str) {}
 
-fn part2(input: &str, output: &mut dyn Write) {}
+fn part2(input: &str) {}
