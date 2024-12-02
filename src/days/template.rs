@@ -1,7 +1,7 @@
 use super::DayInfo;
 
 pub const INFO: DayInfo = DayInfo {
-    name: "Trebuchet?!",
+    name: "...",
     part1,
     part2,
 
