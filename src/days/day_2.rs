@@ -3,7 +3,7 @@ use std::iter::Map;
 use std::str::Lines;
 
 pub const INFO: DayInfo = DayInfo {
-    name: "Trebuchet?!",
+    name: "Red-Nosed Reports",
     part1,
     part2,
 
