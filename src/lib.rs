@@ -3,7 +3,7 @@ mod days;
 use crate::days::DayInfo;
 use days::DAYS;
 use std::fs::File;
-use std::io::{Read};
+use std::io::Read;
 use std::path::Path;
 use std::time::Instant;
 
@@ -49,7 +49,7 @@ pub fn run_all(examples: bool) {
     }
 }
 
-fn run_part<T : FnOnce()>(part: u8, func: T) {
+fn run_part<T: FnOnce()>(part: u8, func: T) {
     println!("## Part {part}");
     let time = Instant::now();
     func();
@@ -59,7 +59,7 @@ fn run_part<T : FnOnce()>(part: u8, func: T) {
 fn run_examples(day: &DayInfo, part: Part) {
     match part {
         Part::One => run_part(1, || (day.part1)(day.example1)),
-        Part::Two => run_part(1, || (day.part2)(day.example2)),
+        Part::Two => run_part(2, || (day.part2)(day.example2)),
         Part::Both => {
             run_part(1, || (day.part1)(day.example1));
             run_part(2, || (day.part2)(day.example2));
@@ -77,7 +77,7 @@ fn run_full(day_num: u8, day: &DayInfo, part: Part) {
         .read_to_string(&mut input)
         .unwrap();
     let input = &input;
-    
+
     match part {
         Part::One => run_part(1, || (day.part1)(input)),
         Part::Two => run_part(2, || (day.part2)(input)),
