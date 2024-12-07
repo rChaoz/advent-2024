@@ -1,6 +1,5 @@
 use super::DayInfo;
 use std::collections::{HashMap, HashSet};
-use std::ops::Index;
 
 const EXAMPLE: &str = "\
 47|53
