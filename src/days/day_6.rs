@@ -1,4 +1,5 @@
 use super::DayInfo;
+use kust::ScopeFunctions;
 
 const EXAMPLE: &str = "\
 ....#.....
@@ -108,10 +109,13 @@ fn part1(input: &str) {
 
 fn part2(input: &str) {
     let (start_x, start_y, direction, map) = parse(input);
+
+    let initial_map = map.clone().apply(|it| run(it, start_x, start_y, direction));
+
     let mut count = 0u32;
     for y in 0..map.len() as i32 {
         for x in 0..map[0].len() as i32 {
-            if map[y as usize][x as usize].wall || (x == start_x && y == start_y) {
+            if !initial_map[y as usize][x as usize].visited || (x == start_x && y == start_y) {
                 continue;
             }
             let mut map = map.clone();

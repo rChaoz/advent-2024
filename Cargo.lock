@@ -15,8 +15,15 @@ dependencies = [
 name = "aoc-2024-rust"
 version = "0.1.0"
 dependencies = [
+ "kust",
  "regex",
 ]
+
+[[package]]
+name = "kust"
+version = "0.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8c9fe7a758e2c08fdf6c2b05c6a7c4f973e43452178583a768bf9e64f6b9b1d7"
 
 [[package]]
 name = "memchr"
