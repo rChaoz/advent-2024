@@ -8,7 +8,7 @@ pub struct DayInfo {
     pub example2: &'static str,
 }
 
-pub const DAYS: [DayInfo; 7] = [
+pub const DAYS: [DayInfo; 8] = [
     day_1::INFO,
     day_2::INFO,
     day_3::INFO,
@@ -16,6 +16,7 @@ pub const DAYS: [DayInfo; 7] = [
     day_5::INFO,
     day_6::INFO,
     day_7::INFO,
+    day_8::INFO,
 ];
 
 mod day_1;
@@ -25,3 +26,4 @@ mod day_4;
 mod day_5;
 mod day_6;
 mod day_7;
+mod day_8;
