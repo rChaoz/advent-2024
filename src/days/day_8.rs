@@ -17,7 +17,7 @@ const EXAMPLE: &str = "\
 ............";
 
 pub const INFO: DayInfo = DayInfo {
-    name: "...",
+    name: "Resonant Collinearity",
     part1,
     part2,
     example1: EXAMPLE,
