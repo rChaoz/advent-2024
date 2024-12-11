@@ -24,7 +24,11 @@ fn main() {
 
     let day = match words.next() {
         None | Some("all") => {
-            run_all(false);
+            run_all(match words.next().unwrap_or("f") {
+                "f" => false,
+                "e" => true,
+                _ => panic!("invalid mode"),
+            });
             return;
         }
         Some(day) => day.parse::<u8>().unwrap(),
