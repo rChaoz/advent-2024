@@ -2,21 +2,20 @@ use super::DayInfo;
 use std::iter::Map;
 use std::str::Lines;
 
-pub const INFO: DayInfo = DayInfo {
-    name: "Red-Nosed Reports",
-    part1,
-    part2,
-
-    example1: "\
+const EXAMPLE: &str = "\
 7 6 4 2 1
 1 2 7 8 9
 9 7 6 2 1
 1 3 2 4 5
 8 6 4 4 1
-1 3 6 7 9",
+1 3 6 7 9";
 
-    example2: "\
-...",
+pub const INFO: DayInfo = DayInfo {
+    name: "Red-Nosed Reports",
+    part1,
+    part2,
+    example1: EXAMPLE,
+    example2: EXAMPLE,
 };
 
 fn parse(input: &str) -> Map<Lines, fn(&str) -> Vec<i32>> {
