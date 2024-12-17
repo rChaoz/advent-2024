@@ -20,7 +20,7 @@ fn main() {
         return;
     }
 
-    let mut words = line.split(' ');
+    let mut words = line.split_whitespace();
 
     let day = match words.next() {
         None | Some("all") => {
