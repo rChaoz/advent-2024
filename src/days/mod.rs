@@ -8,6 +8,24 @@ pub struct DayInfo {
     pub example2: &'static str,
 }
 
-pub const DAYS: [DayInfo; 0] = [/* day_1::INFO */];
+macro_rules! days {
+    ($num:literal) => {
+        use seq_macro::seq;
 
-//mod day_1;
+        seq!(N in 1..=$num {
+            pub const DAYS: [DayInfo; $num] = [
+                #(
+                    day_~N::INFO,
+                )*
+            ];
+        });
+
+        seq!(N in 1..=$num {
+            mod day_~N;
+        });
+    };
+}
+
+// TODO Change to `days!(1)` after copying 'template.rs' into 'day_1.rs'
+//  Then, increment number for each new day
+days!(0);
