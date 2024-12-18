@@ -15,9 +15,16 @@ dependencies = [
 name = "aoc-2024-rust"
 version = "0.1.0"
 dependencies = [
+ "fix_fn",
  "kust",
  "regex",
 ]
+
+[[package]]
+name = "fix_fn"
+version = "1.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "380f193e13417258cee0f6f750a1be449bfaa476874985fd6690be580086f7f1"
 
 [[package]]
 name = "kust"
