@@ -8,40 +8,22 @@ pub struct DayInfo {
     pub example2: &'static str,
 }
 
-pub const DAYS: [DayInfo; 17] = [
-    day_1::INFO,
-    day_2::INFO,
-    day_3::INFO,
-    day_4::INFO,
-    day_5::INFO,
-    day_6::INFO,
-    day_7::INFO,
-    day_8::INFO,
-    day_9::INFO,
-    day_10::INFO,
-    day_11::INFO,
-    day_12::INFO,
-    day_13::INFO,
-    day_14::INFO,
-    day_15::INFO,
-    day_16::INFO,
-    day_17::INFO,
-];
+macro_rules! days {
+    ($num:literal) => {
+        use seq_macro::seq;
 
-mod day_1;
-mod day_10;
-mod day_11;
-mod day_12;
-mod day_13;
-mod day_14;
-mod day_15;
-mod day_16;
-mod day_17;
-mod day_2;
-mod day_3;
-mod day_4;
-mod day_5;
-mod day_6;
-mod day_7;
-mod day_8;
-mod day_9;
+        seq!(N in 1..=$num {
+            pub const DAYS: [DayInfo; $num] = [
+                #(
+                    day_~N::INFO,
+                )*
+            ];
+        });
+
+        seq!(N in 1..=$num {
+            mod day_~N;
+        });
+    };
+}
+
+days!(17);
