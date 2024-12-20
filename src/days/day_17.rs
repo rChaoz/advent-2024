@@ -80,8 +80,7 @@ fn run(mut register: [i64; 3], program: &Vec<u8>) -> Vec<u8> {
                 }
             }
             /* bxc */ 4 => register[B] ^= register[C],
-            /* out */
-            5 => output.push((combo!(op) % 8) as u8),
+            /* out */ 5 => output.push((combo!(op) % 8) as u8),
             /* bdv */ 6 => register[B] = register[A] >> combo!(op),
             /* cdv */ 7 => register[C] = register[A] >> combo!(op),
             _ => panic!("invalid opcode: {instr}"),
@@ -139,9 +138,9 @@ that compose A (right-to-left) must be `000` (0), `011` (3), `101` (5) etc.
 
 ```text
   need an additional any 3 digits at the start as it starts with A >>= 3,
-  we choose 0 as it asks for the smallest number
-             v
-A = reverse(0b3, 0b3, 3b3, 5b3, 4b3, 3b3, 0b3).join(), where nb3 = n in base 3 as a string
+  we choose 000 as it asks for the smallest number
+            v
+A = reverse(0, 0, 3, 5, 4, 3, 0).join(), where each number is written in base 2 as a length-3 0-padded string
 A = reverse(000,000,011,101,100,011,000).join()
 A = [000,011,100,101,011,000,000].join()
 A = 11100101011000000
@@ -184,6 +183,7 @@ do {
     print (B ^ 5 ^ C) % 8
     A >>= 3
 } while (A != 0)
+```
 
 Unlike the example, where the output depends on 3 bits at a time, while A is still processed in 3-bit blocks,
 the output depends on the entire A value, which requires solving backwards.
