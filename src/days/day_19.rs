@@ -1,5 +1,4 @@
 use super::DayInfo;
-use std::collections::BTreeMap;
 
 const EXAMPLE: &str = "\
 r, wr, b, g, bwu, rb, gb, br
@@ -31,34 +30,36 @@ fn parse(input: &str) -> (Vec<&str>, Vec<&str>) {
 
 fn solve(input: &str, part2: bool) {
     let (towels, patterns) = parse(input);
-    let mut solved = 0u64;
-    let mut arrangements = 0u64;
+    let mut count = 0u64;
 
-    for pattern in patterns {
+    'outer: for pattern in patterns {
         // index and number of ways to reach it
-        let mut map = BTreeMap::new();
-        map.insert(0, 1);
-
-        'outer: while let Some((index, ways)) = map.pop_first() {
+        let mut v = vec![0u64; pattern.len()];
+        v[0] = 1;
+        for index in 0..v.iter().len() {
+            if v[index] == 0 {
+                continue;
+            }
             let remaining = &pattern[index..];
             for &towel in &towels {
                 if remaining.starts_with(towel) {
                     let new_index = index + towel.len();
                     if new_index == pattern.len() {
-                        solved += 1;
-                        if !part2 {
-                            break 'outer;
+                        if part2 {
+                            count += v[index];
+                        } else {
+                            count += 1;
+                            continue 'outer;
                         }
-                        arrangements += ways;
-                    } else {
-                        *map.entry(new_index).or_insert(0) += ways;
+                    } else if new_index < pattern.len() {
+                        v[new_index] += v[index];
                     }
                 }
             }
         }
     }
 
-    println!("{}", if part2 { arrangements } else { solved });
+    println!("{count}");
 }
 
 fn part1(input: &str) {
