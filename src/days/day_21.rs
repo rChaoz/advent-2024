@@ -138,7 +138,7 @@ impl Display for Code {
         match self {
             Code::Exact(str, _) => f.write_str(str),
             Code::Any(codes) => {
-                write!(f, "(")?;
+                write!(f, "( ")?;
                 let mut iter = codes.iter();
                 if let Some(code) = iter.next() {
                     write!(f, "{}", code)?;
@@ -146,7 +146,7 @@ impl Display for Code {
                 for code in iter {
                     write!(f, " | {}", code)?;
                 }
-                write!(f, ")")
+                write!(f, " )")
             }
             Code::Seq(codes) => {
                 let mut iter = codes.iter();
@@ -154,7 +154,7 @@ impl Display for Code {
                     write!(f, "{}", code)?;
                 }
                 for code in iter {
-                    write!(f, "  {}", code)?;
+                    write!(f, " {}", code)?;
                 }
                 Ok(())
             }
@@ -231,13 +231,6 @@ fn part1(input: &str) {
     );
 }
 
-/*
-029A
-<A^A(^^>A|>^^A)vvvA
-v<<A>>^A<A>A(<AA(>vA|v>A)^A|vA(^<A|<^A)A>A)(v<A|<vA)AA(^>A|>^A)
-(v<A|<vA)<AA>>^AvAA(^<A|<^A)>Av<<A>>^AvA^A(v<<A>>^AA(vA<A(^>A|>^A)|(v<A|<vA)>A^A)<A>A|(v<A|<vA)(^>A|>^A)(<Av<A>>^A|v<<A>^A>A)AvA^A)((v<A|<vA)<A>>^A|v<<A>A(^>A|>^A))AA(<A(>vA|v>A)^A|vA(^<A|<^A)>A)
-68
- */
 fn part2(input: &str) {
     fn entry_len(entry: &HashMap<&str, u64>) -> u64 {
         entry
